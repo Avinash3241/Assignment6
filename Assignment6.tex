@@ -1,0 +1,63 @@
+\documentclass[journal,twocolumn]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\title{Assignment 6}
+\author{NIMMALA AVINASH(CS21BTECH11039)}
+\begin{document}
+
+\maketitle
+
+{\LARGE \textbf{Question:\\}}
+Suppose $ x $ and $ y $ have joint density
+\begin{align}
+f_{xy}(x,y)=\begin{cases}
+1 &0\leq x\leq 2,0\leq y\leq 1,2y \leq x\\
+0 &otherwise
+\end{cases}
+\end{align}
+show that $ z = x+y $ has density
+\begin{align}
+f_{xy}(x,y) = \begin{cases}
+(1/3)z &0\leq z\leq 2\\
+2-(2/3)z &2\leq z\leq 3\\
+0 &elsewhere
+\end{cases}
+\end{align}
+{\LARGE \textbf{Solution:}}
+\begin{align}
+F_{Z}(z) &= P(X+Y \leq z)\\
+&=\begin{cases}
+P(X+Y\leq z), &0 < z < 2\\
+1-P(X+Y>z), &2 < z < 3\\
+\end{cases}\\
+where,\\
+ &2y\leq x ,\implies3y\leq x+y \implies y \leq \frac{z}{3}\\
+ & 2y \leq x \leq z-y\\
+ & 0 \leq y \leq \frac{z}{3}\\
+&=\begin{cases}
+\int_{0}^{z/3} \int_{2y}^{z-y}f_{XY}(x,y) dx dy  , &0 < z < 2\\
+1-\int_{2z/3}^{2} \int_{z-x}^{x/2}f_{XY}(x,y) dy dx , &2 < z < 3\\
+\end{cases}\\
+&=\begin{cases}
+\int_{0}^{z/3}(z-3y)dy , &0 < z < 2\\
+1-\int_{2z/3}^{2}(\frac{3x}{2}-z)dx &2 < z < 3\\
+\end{cases}\\
+&=\begin{cases}
+\frac{z^{2}}{6}, &0 < z < 2\\
+2z-\frac{z^{2}}{3}-2,&2 < z < 3\\
+\end{cases}
+\end{align}
+Thus\\
+\begin{align}
+f_{Z}(z)&=\frac{d}{dz}(F_{Z}(z))\\
+f_{Z}(z)&=\begin{cases}
+\frac{1}{3}z,&0 < z < 2\\
+2-\frac{2z}{3},&2 < z < 3\\
+0,&otherwise
+\end{cases}
+\end{align}
+\end{document}
